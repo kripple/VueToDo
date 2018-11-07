@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ToDo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
-  </head>
-  <body>
-    <h1>ToDo</h1>
-  
-    <ul id="list">
-      <li v-for="(item, itemIndex) in items" v-if="item.visible">
-        <input type="checkbox" v-bind:id="item.id" v-bind:value="item.id">
-        <label v-bind:for="item.id">{{ item.description }}</label>
-        <button v-on:click="removeItem(itemIndex)">Remove</button>
-      </li>
-    </ul>
 
-    <div id="add">
-      <input  v-model="newItem"  type="text" placeholder="Add A ToDo">
-      <button v-on:click="addItem">Add</button>
-    </div>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
-    <script src="main.js"></script>
-  </body>
+<head>
+  <title>ToDo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+  <div id="title">To Do List</div>
+
+  <div id="add" class="gridContainer">
+    <input v-model="newItem" type="text" placeholder="Add A ToDo" class="column">
+    <button v-on:click="addItem" class="column">Add</button>
+  </div>
+
+  <ul id="list" class="container">
+    <li v-for="(item, itemIndex) in items" v-if="item.visible">
+      <input type="checkbox" v-bind:id="item.id" v-bind:value="item.id">
+      <label v-bind:for="item.id">{{ item.description }}</label>
+      <button v-on:click="removeItem(itemIndex)" class="deleteButton">&#x2716;</button>
+    </li>
+  </ul>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+  <script src="main.js"></script>
+</body>
+
 </html>
